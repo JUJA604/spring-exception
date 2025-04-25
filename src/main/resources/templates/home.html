@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div>홈페이지요</div>
+    <form method="get" th:action="@{/file}">
+            <input type="Submit" value="파일 내용 페이지">
+    </form>
+    <form method="get" th:action="@{/file/exception}">
+        <input type="Submit" value="파일 예외 페이지">
+    </form>
+</body>
+</html>

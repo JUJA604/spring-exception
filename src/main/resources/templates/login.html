@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Registration or Sign Up form in HTML CSS | CodingLab </title>
+    <link rel="stylesheet" href="/static/css/login.css" th:href="@{/css/login.css}">
+</head>
+<body>
+<div class="wrapper">
+    <h2>로그인</h2>
+    <form th:action="@{/login}" method="post">
+        <div class="input-box">
+            <label>
+                <input name="loginId" type="text" placeholder="아이디를 입력해주세요" required>
+            </label>
+        </div>
+        <div class="input-box">
+            <label>
+                <input name="password" type="password" placeholder="비밀번호를 입력해주세요" required>
+            </label>
+        </div>
+        <div class="input-box button">
+            <input type="Submit" value="로그인">
+        </div>
+    </form>
+</div>
+</body>
+</html>
