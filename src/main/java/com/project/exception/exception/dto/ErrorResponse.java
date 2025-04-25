@@ -1,5 +1,6 @@
 package com.project.exception.exception.dto;
 
+import com.project.exception.exception.enums.ErrorCode;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
@@ -13,15 +14,15 @@ public class ErrorResponse {
     private final String message;
     private final LocalDateTime timestamp;
 
-    public static ErrorResponse of(HttpStatus status, String errorCode, String message) {
-        return new ErrorResponse(status.value(), errorCode, message, LocalDateTime.now());
+    public static ErrorResponse of(ErrorCode error) {
+        return new ErrorResponse(error);
     }
 
     @Builder
-    public ErrorResponse(int status, String errorCode, String message, LocalDateTime timestamp) {
-        this.status = status;
-        this.errorCode = errorCode;
-        this.message = message;
-        this.timestamp = timestamp;
+    public ErrorResponse(ErrorCode error) {
+        this.status = error.getStatus().value();
+        this.errorCode = error.getCode();
+        this.message = error.getMessage();
+        this.timestamp = LocalDateTime.now();
     }
 }

@@ -16,33 +16,21 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handle(FileReadException e) {
         ErrorCode errorCode = e.getErrorCode();
         return ResponseEntity.status(errorCode.getStatus())
-                .body(ErrorResponse.of(
-                        errorCode.getStatus(),
-                        errorCode.getCode(),
-                        e.getMessage()
-                ));
+                .body(ErrorResponse.of(errorCode));
     }
 
     @ExceptionHandler(InvalidPasswordException.class)
     public ResponseEntity<ErrorResponse> handle(InvalidPasswordException e) {
         ErrorCode errorCode = e.getErrorCode();
         return ResponseEntity.status(errorCode.getStatus())
-                .body(ErrorResponse.of(
-                        errorCode.getStatus(),
-                        errorCode.getCode(), // or errorCode.name()
-                        e.getMessage()
-                ));
+                .body(ErrorResponse.of(errorCode));
     }
 
     @ExceptionHandler(MemberNotFoundException.class)
     public ResponseEntity<ErrorResponse> handle(MemberNotFoundException e) {
         ErrorCode errorCode = e.getErrorCode();
         return ResponseEntity.status(errorCode.getStatus())
-                .body(ErrorResponse.of(
-                        errorCode.getStatus(),
-                        errorCode.getCode(),
-                        e.getMessage()
-                ));
+                .body(ErrorResponse.of(errorCode));
     }
 }
 
