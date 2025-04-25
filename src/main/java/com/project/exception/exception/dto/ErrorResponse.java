@@ -3,7 +3,6 @@ package com.project.exception.exception.dto;
 import com.project.exception.exception.enums.ErrorCode;
 import lombok.Builder;
 import lombok.Getter;
-import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
 

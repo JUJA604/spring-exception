@@ -12,25 +12,24 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(FileReadException.class)
-    public ResponseEntity<ErrorResponse> handle(FileReadException e) {
-        ErrorCode errorCode = e.getErrorCode();
+    private ResponseEntity<ErrorResponse> globalHandle(ErrorCode errorCode) {
         return ResponseEntity.status(errorCode.getStatus())
                 .body(ErrorResponse.of(errorCode));
+    }
+
+    @ExceptionHandler(FileReadException.class)
+    public ResponseEntity<ErrorResponse> handle(FileReadException e) {
+        return globalHandle(e.getErrorCode());
     }
 
     @ExceptionHandler(InvalidPasswordException.class)
     public ResponseEntity<ErrorResponse> handle(InvalidPasswordException e) {
-        ErrorCode errorCode = e.getErrorCode();
-        return ResponseEntity.status(errorCode.getStatus())
-                .body(ErrorResponse.of(errorCode));
+        return globalHandle(e.getErrorCode());
     }
 
     @ExceptionHandler(MemberNotFoundException.class)
     public ResponseEntity<ErrorResponse> handle(MemberNotFoundException e) {
-        ErrorCode errorCode = e.getErrorCode();
-        return ResponseEntity.status(errorCode.getStatus())
-                .body(ErrorResponse.of(errorCode));
+        return globalHandle(e.getErrorCode());
     }
 }
 
